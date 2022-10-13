@@ -1,0 +1,6 @@
+/OOP_KPI.sln
+.idea
+*bin
+*obj
+*Properties
+*.csproj
