@@ -3,19 +3,19 @@
 
     public class Stats
     {
-        public string opponentName { get; }
-        public string endGame { get; }
-        public uint currentRating { get; }
-        public string changedRating { get; }
-        public uint index { get; }
+        public string OpponentName { get; }
+        public string EndGame { get; }
+        public uint CurrentRating { get; }
+        public string ChangedRating { get; }
+        public uint Index { get; }
 
         public Stats(uint index, string opponentName, string endGame, string changedRating, uint currentRating)
         {
-            this.index = index;
-            this.opponentName = opponentName;
-            this.endGame = endGame;
-            this.changedRating = changedRating;
-            this.currentRating = currentRating;
+            this.Index = index;
+            this.OpponentName = opponentName;
+            this.EndGame = endGame;
+            this.ChangedRating = changedRating;
+            this.CurrentRating = currentRating;
         }
     }
 }

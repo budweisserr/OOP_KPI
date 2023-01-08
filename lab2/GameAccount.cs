@@ -7,7 +7,7 @@ namespace lab2
     public abstract class BaseGameAccount
     {
         public string UserName { get; }
-        protected uint GamesCount { get; set; }
+        protected uint GamesCount { get; private set; }
         private int _curRating;
         protected int CurrentRating
         {

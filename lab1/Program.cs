@@ -2,7 +2,6 @@
 
 namespace lab1
 {
-
     public class Program
     {
         static void Main(String[] args)

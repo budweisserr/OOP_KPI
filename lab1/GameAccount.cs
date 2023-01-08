@@ -1,34 +1,32 @@
 ﻿using System.Collections.Generic;
 
 namespace lab1
-{
-
+{ 
     class GameAccount
     {
-        private uint index { set; get; }
+        private static uint _index;
         private string UserName { get; }
         private uint CurrentRating { set; get; }
 
         private uint GamesCount { set; get; }
-        private List<Stats> stats = new List<Stats>();
+        private readonly List<Stats> _stats = new List<Stats>();
 
         public GameAccount(string name)
         {
             UserName = name;
             CurrentRating = 100;
-            index = 0;
+            _index++;
             GamesCount = 0;
         }
 
         public void WinGame(string opponentName, uint rating)
         {
             CurrentRating += rating;
-            index++;
             GamesCount++;
             var changedRating = new System.Text.StringBuilder();
             changedRating.Append($"+{rating.ToString()}");
-            var result = new Stats(index, opponentName, "Win", changedRating.ToString(), CurrentRating);
-            stats.Add(result);
+            var result = new Stats(_index, opponentName, "Win", changedRating.ToString(), CurrentRating);
+            _stats.Add(result);
         }
 
         public void LoseGame(string opponentName, uint rating)
@@ -41,13 +39,12 @@ namespace lab1
             {
                 CurrentRating -= rating;
             }
-
-            index++;
+            
             GamesCount++;
             var changedRating = new System.Text.StringBuilder();
             changedRating.Append($"-{rating.ToString()}");
-            var result = new Stats(index, opponentName, "Lose", changedRating.ToString(), CurrentRating);
-            stats.Add(result);
+            var result = new Stats(_index, opponentName, "Lose", changedRating.ToString(), CurrentRating);
+            _stats.Add(result);
         }
 
         public string GetStats()
@@ -55,10 +52,10 @@ namespace lab1
             var allStats = new System.Text.StringBuilder();
             allStats.AppendLine($"Stats for {UserName}:");
             allStats.AppendLine("Index\tOpponent\tEnd of game\tEarned rating\tCurrent rating");
-            foreach (var item in stats)
+            foreach (var item in _stats)
             {
                 allStats.AppendLine(
-                    $"{item.index}\t{item.opponentName}\t\t{item.endGame}\t\t{item.changedRating}\t\t{item.currentRating}");
+                    $"{item.Index}\t{item.OpponentName}\t\t{item.EndGame}\t\t{item.ChangedRating}\t\t{item.CurrentRating}");
             }
 
             allStats.AppendLine($"Total games: {GamesCount}");
